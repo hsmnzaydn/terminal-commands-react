@@ -1,6 +1,21 @@
 .App {
   text-align: center;
 }
+.categoryItem {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.categoryItem:hover {
+  font-size: 30px;
+  cursor: pointer;
+
+}
+
+.SearchBar{
+  background-color: #282c34;
+}
 
 .App-logo {
   height: 40vmin;
