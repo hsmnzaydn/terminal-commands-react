@@ -11,9 +11,11 @@ const Item = styled(Paper)(({theme}) => ({
 const CommandItem = ({title, index,description}) => {
     return (
         <Grid item xs={12} key={index} >
-            <Paper elevation={3}>
-                <Item><b>{title}</b></Item>
-                <div style={{backgroundColor:'#222833', color:'#fff', padding:'8px'}}>{description}</div>
+            <Paper elevation={3} style={{backgroundColor:'#222833'}}>
+                <Item>
+                    <b>{title}</b>
+                    <div style={{backgroundColor:'#222833', color:'#fff', paddingTop:'8px'}}>{description}</div>
+                </Item>
             </Paper>
         </Grid>
 

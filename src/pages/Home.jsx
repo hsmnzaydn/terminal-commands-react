@@ -4,9 +4,21 @@ import CategoryItem from "../components/CategoryItem";
 import {Box, Grid} from "@mui/material";
 import SearchBar from "../components/SearchBar";
 import {useNavigate} from "react-router-dom";
-
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 const Home = () => {
+    const firebaseConfig = {
+        apiKey: "AIzaSyD6h_b-XL4kG6cwTn1bpSRb_uRNERT5AKE",
+        authDomain: "terminal-commands-e34f5.firebaseapp.com",
+        projectId: "terminal-commands-e34f5",
+        storageBucket: "terminal-commands-e34f5.appspot.com",
+        messagingSenderId: "955991291842",
+        appId: "1:955991291842:web:5d0234e9eaa79a5c0e885b",
+        measurementId: "G-0ZS3PR45YX"
+    };
 
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
     const navigate = useNavigate();
 
     const [categories, setCategories] = useState([])
@@ -43,12 +55,12 @@ const Home = () => {
 
         <div>
             <Box sx={{flexGrow: 1, margin: 8}}>
-                <SearchBar onChangeListener={search}/>
+                <img src='/logo.png' alt='image'/>
 
                 <div style={{marginTop: '32px'}}>
                     <Grid container spacing={{xs: 2, md: 3}} columns={{xs: 4, sm: 8, md: 12}}>
                         {categories.map((_, index) => (
-                            <CategoryItem title={_.title} index={index} onClick={() => navigateCategoryDetail(_.id)}/>
+                            <CategoryItem key={index} title={_.title} index={index} onClick={() => navigateCategoryDetail(_.id)}/>
                         ))}
                     </Grid>
                 </div>
