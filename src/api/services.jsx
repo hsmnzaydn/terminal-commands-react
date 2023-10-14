@@ -28,6 +28,9 @@ const searchCommand = async (query) => {
 }
 
 const getCategories = async () => {
+    if (categories && categories.length) {
+        return categories
+    }
 
     const response = await http.get("/api/categories", {}, {
         headers: {
@@ -64,7 +67,10 @@ const getCategoryDetail = async (categoryId) => {
 
 const searchCategoryDetailCommands  = (categoryId,query) =>{
     const commands = JSON.parse(localStorage.getItem(categoryId))
-    return commands.filter(command => command.title.include(query)|| command.description.include(query))
+    return commands.filter(command =>
+        command.title.toLowerCase().includes(query.toLowerCase()) ||
+        command.description.toLowerCase().includes(query.toLowerCase())
+    );
 }
 
 export {getUserToken, getCategories, searchCommand, getCategoryDetail,searchCategoryDetailCommands}

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {getCategories, getUserToken, searchCommand} from "../api/services";
+import {getCategories, getUserToken, searchCategoryDetailCommands, searchCommand} from "../api/services";
 import CategoryItem from "../components/CategoryItem";
 import {Box, Grid} from "@mui/material";
 import SearchBar from "../components/SearchBar";
@@ -24,6 +24,13 @@ const Home = () => {
         } catch (error) {
         }
     }
+    const search = (e) =>{
+        if (e.target.value === ""){
+            fetchCategories()
+        }else {
+            searchCommand(e.target.value)
+        }
+    }
 
 
 
@@ -36,6 +43,8 @@ const Home = () => {
 
         <div>
             <Box sx={{flexGrow: 1, margin: 8}}>
+                <SearchBar onChangeListener={search}/>
+
                 <div style={{marginTop: '32px'}}>
                     <Grid container spacing={{xs: 2, md: 3}} columns={{xs: 4, sm: 8, md: 12}}>
                         {categories.map((_, index) => (
