@@ -54,17 +54,16 @@ const Home = () => {
 
         <div>
             <Box sx={{flexGrow: 1, margin: 8}}>
-                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
-                    <img src='/logo.png' alt='logo' style={{width: '8%', height: '8%'}}/>
-                    <div style={{color: '#fff', fontFamily: 'roboto', fontSize: '50px', fontWeight: 'bold', marginLeft: '10px'}}>
+                <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
+                    <img src='/logo.png' alt='logo' style={{width: '20%', height: '20%', maxWidth: '100px', maxHeight: '100px'}}/>
+                    <div style={{color: '#fff', fontFamily: 'roboto', fontSize: '2em', fontWeight: 'bold', marginTop: '8px'}}>
                         Linux Terminal Commands
                     </div>
                 </div>
                 <div style={{marginTop: '32px'}}>
-                    <Grid container spacing={{xs: 2, md: 3}} columns={{xs: 4, sm: 8, md: 12}}>
+                    <Grid container spacing={{xs: 2, md: 3}} columns={{xs: 6, sm: 8, md: 12}}>
                         {categories.map((_, index) => (
-                            <CategoryItem key={index} title={_.title} index={index}
-                                          onClick={() => navigateCategoryDetail(_.id)}/>
+                            <CategoryItem key={index} title={_.title} index={index} onClick={() => navigateCategoryDetail(_.id)} />
                         ))}
                     </Grid>
                 </div>

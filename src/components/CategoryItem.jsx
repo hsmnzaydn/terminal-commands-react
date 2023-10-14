@@ -4,17 +4,20 @@ import "@fontsource/roboto"
 
 const Item = styled(Paper)(({theme}) => ({
     backgroundColor: '#222833',
-    padding: theme.spacing(8),
+    padding: theme.spacing(3),
     textAlign: 'center',
     color: '#fff',
-    fontFamily: 'roboto'
+    fontFamily: 'roboto',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
 }));
-const CategoryItem = ({title, index,onClick}) => {
+
+const CategoryItem = ({title, index, onClick}) => {
     return (
-        <Grid item xs={2} sm={4} md={4} key={index} className='categoryItem' onClick={onClick}>
+        <Grid item xs={12} sm={6} md={4} key={index} className='categoryItem' onClick={onClick}>
             <Paper elevation={3} style={{backgroundColor:'#222833'}}><Item>{title}</Item></Paper>
         </Grid>
-
     );
 }
 
