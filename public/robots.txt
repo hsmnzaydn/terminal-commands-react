@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: linuxterminalcommands.tech/sitemap.xml
