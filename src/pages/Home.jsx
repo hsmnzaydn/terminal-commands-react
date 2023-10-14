@@ -4,11 +4,9 @@ import CategoryItem from "../components/CategoryItem";
 import {Box, Grid} from "@mui/material";
 import SearchBar from "../components/SearchBar";
 import {useNavigate} from "react-router-dom";
-const Sitemap = require('sitemap');
 
 const Home = () => {
 
-    // Write sitemap to public directory
     const navigate = useNavigate();
 
     const [categories, setCategories] = useState([])
