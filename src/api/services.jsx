@@ -2,15 +2,20 @@ import {http} from "./client";
 import {v4 as uuidv4} from 'uuid';
 
 let categories = JSON.parse(localStorage.getItem("categories"))
+
 const getUserToken = async () => {
-    return await http.post("/api/accounts", {
-        pnsToken: uuidv4(),
-        udid: uuidv4()
-    }, {
-        timeout: 5000
-    }).then(function (response) {
-        localStorage.setItem('authorizationKey', "Bearer " + response.data['data']['authozationKey']);
-    })
+    if (sessionStorage.getItem("authorizationKey") === null){
+        return  await http.post("/api/accounts", {
+            pnsToken: uuidv4(),
+            udid: uuidv4()
+        }, {
+            timeout: 5000
+        }).then(function (response) {
+            sessionStorage.setItem("authorizationKey", "Bearer " + response.data['data']['authozationKey']);
+        })
+    }else {
+        return sessionStorage.getItem("authorizationKey");
+    }
 }
 
 const searchCommand = async (query) => {
@@ -20,7 +25,7 @@ const searchCommand = async (query) => {
         }
     }, {
         headers: {
-            Authorization: localStorage.getItem('authorizationKey'),
+            Authorization: sessionStorage.getItem('authorizationKey'),
             'app-language': 'EN'
         },
         timeout: 5000
@@ -34,7 +39,7 @@ const getCategories = async () => {
 
     const response = await http.get("/api/categories", {}, {
         headers: {
-            Authorization: localStorage.getItem('authorizationKey'),
+            Authorization: sessionStorage.getItem('authorizationKey'),
             'app-language': 'EN'
         },
         timeout: 5000
@@ -49,7 +54,7 @@ const getCategoryDetail = async (categoryId) => {
     if (localStorage.getItem(categoryId) === null) {
         const response = await http.get("/api/categories/" + categoryId + "/commands", {}, {
             headers: {
-                Authorization: localStorage.getItem('authorizationKey'),
+                Authorization: sessionStorage.getItem('authorizationKey'),
                 'app-language': 'EN'
             },
             timeout: 5000
