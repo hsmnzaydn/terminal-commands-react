@@ -7,7 +7,7 @@ const Item = styled(Paper)(({theme}) => ({
     padding: theme.spacing(3),
     textAlign: 'center',
     color: '#fff',
-    fontFamily: 'roboto',
+    fontFamily: 'Roboto',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',

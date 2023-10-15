@@ -59,7 +59,7 @@ const Home = () => {
             <Box sx={{flexGrow: 1, margin: 8}}>
                 <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
                     <img src='/logo.png' alt='logo' style={{width: '20%', height: '20%', maxWidth: '100px', maxHeight: '100px'}}/>
-                    <div style={{color: '#fff', fontFamily: 'roboto', fontSize: '2em', fontWeight: 'bold', marginTop: '8px'}}>
+                    <div style={{color: '#fff', fontFamily: 'Roboto', fontSize: '2em', fontWeight: 'bold', marginTop: '8px'}}>
                         Linux Terminal Commands
                     </div>
                 </div>

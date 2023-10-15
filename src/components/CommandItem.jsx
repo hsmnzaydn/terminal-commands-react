@@ -6,7 +6,7 @@ const Item = styled(Paper)(({theme}) => ({
     backgroundColor: '#222833',
     padding: theme.spacing(2),
     color: '#fff',
-    fontFamily: 'roboto'
+    fontFamily: 'Roboto'
 }));
 const CommandItem = ({title, index,description}) => {
     return (
