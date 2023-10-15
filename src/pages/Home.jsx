@@ -4,7 +4,6 @@ import CategoryItem from "../components/CategoryItem";
 import {Box, Grid} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import {initializeApp} from "firebase/app";
-import {getAnalytics} from "firebase/analytics";
 
 const Home = () => {
     const firebaseConfig = {
@@ -17,16 +16,13 @@ const Home = () => {
         measurementId: "G-0ZS3PR45YX"
     };
 
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
+    initializeApp(firebaseConfig);
     const navigate = useNavigate();
 
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
-        getUserToken().then(() => {
-            fetchCategories()
-        })
+       getToken();
     }, []);
 
     async function fetchCategories() {
@@ -34,9 +30,16 @@ const Home = () => {
             const categories = await getCategories()
             setCategories(categories)
         } catch (error) {
+            sessionStorage.setItem("authorizationKey", null);
+            getToken()
         }
     }
 
+    function getToken(){
+        getUserToken().then(() => {
+            fetchCategories()
+        })
+    }
     const search = (e) => {
         if (e.target.value === "") {
             fetchCategories()
