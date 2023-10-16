@@ -4,7 +4,6 @@ import {v4 as uuidv4} from 'uuid';
 let categories = JSON.parse(localStorage.getItem("categories"))
 
 const getUserToken = async () => {
-    if (sessionStorage.getItem("authorizationKey") === null){
         return  await http.post("/api/accounts", {
             pnsToken: uuidv4(),
             udid: uuidv4()
@@ -13,9 +12,7 @@ const getUserToken = async () => {
         }).then(function (response) {
             sessionStorage.setItem("authorizationKey", "Bearer " + response.data['data']['authozationKey']);
         })
-    }else {
-        return sessionStorage.getItem("authorizationKey");
-    }
+
 }
 
 const searchCommand = async (query) => {
@@ -25,7 +22,7 @@ const searchCommand = async (query) => {
         }
     }, {
         headers: {
-            Authorization: sessionStorage.getItem('authorizationKey'),
+            Authorization: "Bearer webserkan",
             'app-language': 'EN'
         },
         timeout: 5000
@@ -39,7 +36,7 @@ const getCategories = async () => {
 
     const response = await http.get("/api/categories", {}, {
         headers: {
-            Authorization: sessionStorage.getItem('authorizationKey'),
+            Authorization: "Bearer webserkan",
             'app-language': 'EN'
         },
         timeout: 5000
@@ -54,7 +51,7 @@ const getCategoryDetail = async (categoryId) => {
     if (localStorage.getItem(categoryId) === null) {
         const response = await http.get("/api/categories/" + categoryId + "/commands", {}, {
             headers: {
-                Authorization: sessionStorage.getItem('authorizationKey'),
+                Authorization: "Bearer webserkan",
                 'app-language': 'EN'
             },
             timeout: 5000

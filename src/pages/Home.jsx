@@ -30,15 +30,12 @@ const Home = () => {
             const categories = await getCategories()
             setCategories(categories)
         } catch (error) {
-            sessionStorage.setItem("authorizationKey", null);
             getToken()
         }
     }
 
     function getToken(){
-        getUserToken().then(() => {
-            fetchCategories()
-        })
+        fetchCategories()
     }
     const search = (e) => {
         if (e.target.value === "") {

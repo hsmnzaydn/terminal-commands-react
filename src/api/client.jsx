@@ -13,27 +13,19 @@ let instance = axios.create({
 
 instance.interceptors.request.use(function (config) {
     const token = localStorage.getItem('authorizationKey');
-    config.headers.Authorization = token;
+    config.headers.Authorization = "Bearer xWBHGCTNb6580aL";
     return config;
 });
 
 instance.interceptors.request.use(request => {
- /*   console.log("----REQUEST----")
-    console.log("REQUEST URL: " + request.url)
-    console.log("REQUEST METHOD: " + request.method)
-    console.log("REQUEST HEADER: " + request.headers)
-    console.log("REQUEST DATA: " + JSON.stringify(request.data))
-    console.log("--------")*/
+
     return request
 })
 
 instance.interceptors.response.use(
     (response) => {
-   /*     console.log("----RESPONSE----")
-        console.log("RESPONSE METHOD: " + response.method)
-        console.log("RESPONSE DATA: " + JSON.stringify(response.data))
-        console.log("--------")
-*/
+
+
         return response;
     },
     async (err) => {
